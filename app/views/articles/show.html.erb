@@ -1,4 +1,5 @@
 <div class="header-title">
+  <%= image_tag @article.user.avatar.url(:thumb) %>
   <h3 class="page-header title-text"> <%= @article.title %></h3>
 <p>
   <%= @article.created_at.strftime('%d/%m/%Y %H:%M')  %>
@@ -21,21 +22,18 @@
   <%= @article.votes.count %>
  </p>
 
-<!-- <div class="coment"> -->
   <% @article.comments.each do |comment| %>
     <div class="coment">
     <p class="page-header name">
+    <%= image_tag comment.user.avatar.url(:thumb) %>
       <strong>Имя:</strong>
-      <% unless @article.user.nil? %>
         <td><%= @article.user.first_name%> </td>
     </p>
-  <% end %>
     <p>
       <strong>Комментарий:</strong>
       <%= comment.body %>
     </p>
     </div>
-<!-- </div> -->
 
   <p class="btn btn-danger btn-sm">
     <%= link_to 'Удалить комментарий', [comment.article, comment],
@@ -48,30 +46,29 @@
 <div class="add-comment">
   <h4>Добавить комметарий:</h4>
     <%= form_for([@article, @article.comments.build]) do |f| %>
-     
+      <%= image_tag current_user.avatar.url(:thumb) %>
       <p>
         <%= f.label :Имя %>
-          <% unless @article.user.nil? %>
-        <td><%= @article.user.first_name%> </td>
-          <% end %>
+        <td><%= current_user.first_name%> </td>
       </p> 
 
   <div class="form-group">
     <%= f.label :Комментарий %><br>
     <%= f.text_area :body, class: 'form-control' %>
+    <%= f.hidden_field :user_id, :value => current_user.id  %>
   </div>
-  
+
+
 </div> 
 
 <div class="buttons container row"> 
   <div class="actions col-xs-2 btn-save">
     <%= submit_tag 'Cоздать Комментарий', class: 'btn btn-success' %>
   </div>
+  <% end %>
   
-  <div class="btn btn-default col-xs-2 col-xs-offset-8 btn-back "><%= link_to 'Назад', articles_path %> 
-  </div>
+  <div class="btn btn-default col-xs-2 col-xs-offset-8 btn-back "><%= link_to 'Назад', articles_path %> </div>
 </div>
-<% end %>
 
     
 

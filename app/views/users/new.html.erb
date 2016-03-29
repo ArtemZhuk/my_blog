@@ -1,6 +1,6 @@
 
 <h1>Регистрация</h1>
-<%= form_for @user do |f| %>
+<%= form_for @user, url: users_path, html: { multipart: true } do |f| %>
   <% if @user.errors.any? %>
     <div class="error_massages">
       <h2> Форма is invalid </h2>
@@ -12,13 +12,17 @@
     </div>
   <% end %>
 
-  <div class="form-group">
+  <%= f.file_field :avatar %>
+  <!-- <div class="form-group">
     <label for="exampleInputFile">Выбрать файл</label>
     <input type="file" id="exampleInputFile">
     <p class="help-block">Example block-level help text here.</p>
   </div>
 
-  <img src="..." alt="..." class="img-thumbnail">
+  <img src="..." alt="..." class="img-thumbnail"> -->
+
+  
+  
  
   <div class="form-group" style="width: 50%">
     <%= f.label :email %><br />
