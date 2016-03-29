@@ -27,8 +27,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap-sass'
 gem 'twitter-bootstrap-rails'
 gem 'sass', '~> 3.4'
-gem 'pusher'
-gem "paperclip"
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -41,8 +40,7 @@ group :development, :test do
   gem 'letter_opener'
 end
 
-gem 'resque'
-gem 'whenever'
+gem "paperclip"
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
@@ -51,16 +49,8 @@ group :development do
   gem 'spring'
 end
 
-gem 'resque'
-gem 'whenever'
+
  
-group :test do
-  gem 'rspec-rails'
-  gem 'factory_girl_rails'
-  gem 'database_cleaner'
-  gem 'faker'
-  gem 'capybara'
-  gem 'selenium-webdriver'
-end
+
 
 
