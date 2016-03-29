@@ -3,7 +3,6 @@ class Article < ActiveRecord::Base
   has_many :comments
   has_many :votes
 
-  # default_scope -> {order('created_at DESC')}
   validates :title, presence: true,
             length: { minimum: 5 }
   validates :text, presence: true,
