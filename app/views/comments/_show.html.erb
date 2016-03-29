@@ -1,0 +1,19 @@
+<% @article.comments.each do |comment| %>
+  <div class="coment">
+    <%= image_tag comment.user.avatar.url(:thumb) %>
+    <p class="page-header name">
+      <strong>Имя:</strong>
+      <td><%= @article.user.first_name%> </td>
+    </p>
+    <p>
+      <strong>Комментарий:</strong>
+      <%= comment.body %>
+    </p>
+  </div>
+
+  <p class="btn btn-danger btn-sm">
+    <%= link_to 'Удалить комментарий', [comment.article, comment],
+                 method: :delete,
+                 data: { confirm: 'Вы уверены?' } %>
+  </p>
+<% end %>
