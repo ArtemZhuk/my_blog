@@ -1,0 +1,45 @@
+
+<h1>Регистрация</h1>
+<%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <div class="error_massages">
+      <h2> Форма is invalid </h2>
+      <ul>
+        <% @user.errors.full_messages.each do |messages| %>
+          <li><%= messages %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <label for="exampleInputFile">Выбрать файл</label>
+    <input type="file" id="exampleInputFile">
+    <p class="help-block">Example block-level help text here.</p>
+  </div>
+
+  <img src="..." alt="..." class="img-thumbnail">
+ 
+  <div class="form-group" style="width: 50%">
+    <%= f.label :email %><br />
+    <%= f.text_field :email, class: 'form-control' %>
+  </div>
+  <div class="form-group" style="width: 50%">
+    <%= f.label :first_name, 'Имя'%><br />
+    <%= f.text_field :first_name, class: 'form-control' %>
+  </div>
+  <div class="form-group" style="width: 50%">
+    <%= f.label :last_name, "Фамилия" %><br />
+    <%= f.text_field :last_name, class: 'form-control' %>
+  </div>
+  <div class="form-group" style="width: 50%">
+    <%= f.label :password, 'Пароль' %><br />
+    <%= f.password_field :password, class: 'form-control' %>
+  </div>
+  <div class="form-group" style="width: 50%">
+    <%= f.label :password_confirmation, 'Подтверждение пароля' %><br />
+    <%= f.password_field :password_confirmation, class: 'form-control' %>
+  </div>
+  <div class="actions"><%= f.submit "Зарегистрироваться", class: 'btn btn-primary' %></div>
+<% end %>
+ 

@@ -1,0 +1,54 @@
+ <div class="content ">
+    <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+    <% end %>
+    <table class="table container">
+       <tr>
+        <td class="col-xs-1"><strong>№</strong></td>
+        <td class="col-xs-6"><strong>Петиция</strong></td>
+        <td><strong>Автор</strong></td>
+        <td><strong>Голоса</strong></td>
+        <td><strong>Дата создания</strong></td>
+        <td colspan="2" align="center"><strong>Действия</strong></td>
+
+      </tr>
+
+
+      <% if @article %>
+            <% @article.each_with_index do |article, index| %>
+            <tr>
+              <td><%= index + 1 %> </td>
+              <td><%= link_to article.title, article %></td>
+                <% unless article.user.nil? %>
+                <td><%= article.user.first_name%></td>
+                <td><%= article.votes.count %></td>
+                <td><%= article.created_at.strftime('%d/%m/%Y %H:%M') %></td>
+                <td><div class="actions">
+                  <%= link_to 'Редактировать', edit_article_path(@article) %> 
+                </div></td>
+                <td><div class="actions">
+                  <%= link_to 'Удалить', article,
+                                        method: :delete,
+                                        data: { confirm: 'Вы уверены?' } %> 
+                </div></td>  
+            </tr>
+                <% end %> 
+              <% end %>
+            <% end %>
+    </table>
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

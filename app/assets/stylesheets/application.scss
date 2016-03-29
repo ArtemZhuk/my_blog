@@ -1,0 +1,127 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+/* "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables" */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+input[type=submit] { @extend .btn; }
+
+
+
+
+.sidebar {
+  padding: 10px 0;
+  background: #F0622E;
+}
+.header-col {
+  border-top: none !important;
+}
+
+.user-name {
+  display: inline-block;
+  padding-top: 7px;
+  color: #fff;
+}
+.title {
+  margin-top: 7px !important;
+  color: #fff;
+}
+#user_header {
+  background: #026689;
+}
+.navbar-default {
+  padding-top: 10px !important;
+}
+
+.page-header {
+    margin-bottom: 5px;
+  }
+  .sub-header {
+    border: 1px solid grey;
+    border-radius: 3px;
+    padding: 5px;
+  }
+  .header-title {
+    text-align: center;
+  }
+  .coment {
+    max-width: 80%;
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid grey;
+    margin-bottom: 10px;
+  }
+  .coment p {
+    margin: 0;
+  }
+  .btn-danger a {
+    color: #fff;
+    text-decoration: none;
+  }
+  .btn-danger:hover a {
+    color: #DAD2BF;
+  }
+  .name {
+    width: auto;
+    max-width: 50%;
+  }
+  .btn-back {
+    padding: 5px 3px !important;
+
+  }
+  .btn-row {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .btn-save {
+    padding-left: 0;
+  }
+  .title-text {
+    margin-top: 0;
+  }
+  .add-comment {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    padding: 5px;
+    border: 1px solid grey;
+    border-radius: 3px;
+  }
+  .buttons {
+    margin-bottom: 50px;
+  }
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

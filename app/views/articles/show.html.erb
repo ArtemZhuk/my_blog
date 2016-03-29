@@ -1,0 +1,90 @@
+<div class="header-title">
+  <h3 class="page-header title-text"> <%= @article.title %></h3>
+<p>
+  <%= @article.created_at.strftime('%d/%m/%Y %H:%M')  %>
+ </p>
+</div>
+  <p class="sub-header"> <%= @article.text %>
+  </p>
+
+<p>
+  <% if @article.voted_by?(current_user) %>
+    Вы уже проголосовали за данную статью
+  <% else %>
+  <%= button_to('Проголосовать', votes_path({ article_id: @article.id })) %>
+
+  <% end %>
+</p>
+
+<p>
+  <b>Голосов:</b>
+  <%= @article.votes.count %>
+ </p>
+
+<!-- <div class="coment"> -->
+  <% @article.comments.each do |comment| %>
+    <div class="coment">
+    <p class="page-header name">
+      <strong>Имя:</strong>
+      <% unless @article.user.nil? %>
+        <td><%= @article.user.first_name%> </td>
+    </p>
+  <% end %>
+    <p>
+      <strong>Комментарий:</strong>
+      <%= comment.body %>
+    </p>
+    </div>
+<!-- </div> -->
+
+  <p class="btn btn-danger btn-sm">
+    <%= link_to 'Удалить комментарий', [comment.article, comment],
+                 method: :delete,
+                 data: { confirm: 'Вы уверены?' } %>
+  </p>
+<% end %>
+
+
+<div class="add-comment">
+  <h4>Добавить комметарий:</h4>
+    <%= form_for([@article, @article.comments.build]) do |f| %>
+     
+      <p>
+        <%= f.label :Имя %>
+          <% unless @article.user.nil? %>
+        <td><%= @article.user.first_name%> </td>
+          <% end %>
+      </p> 
+
+  <div class="form-group">
+    <%= f.label :Комментарий %><br>
+    <%= f.text_area :body, class: 'form-control' %>
+  </div>
+  
+</div> 
+
+<div class="buttons container row"> 
+  <div class="actions col-xs-2 btn-save">
+    <%= submit_tag 'Cоздать Комментарий', class: 'btn btn-success' %>
+  </div>
+  
+  <div class="btn btn-default col-xs-2 col-xs-offset-8 btn-back "><%= link_to 'Назад', articles_path %> 
+  </div>
+</div>
+<% end %>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head> 
+  <title>Блог</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+  <div id="container" class="container">
+    <div id="user_header" align="right" class="navbar-default row">
+      <table class="table container">
+        <div class="root_path">
+          <p class="col-xs-6 h4 title " align="left"><%= link_to "Мой блог", root_path %></p>
+        </div>
+        <% if current_user %>
+          <div class="col-xs-6 row">
+            <span class="col-xs-9 user-name"><%= current_user.email %></span>
+            <div class="btn btn-default col-xs-3"><%= link_to "Выйти", logout_path  %></div>
+              <% else %>
+              <div class="btn btn-default"><%= link_to "Зарегистрироваться", new_user_path %> </div>
+              <div class="btn btn-default"><%= link_to "Войти", new_session_path %></div>
+           <% end %>
+          </div>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12"> &nbsp</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">
+      <h3 class="page-header "><%= @name %></h3>
+    </div>
+    <div class="sidebar col-xs-3 col-xs-offset-6 navbar navbar-default">
+      <ul>
+        <li><%= link_to 'Все статьи', '/?all=true' %></li>
+          <% if current_user %>
+          <li><%= link_to 'Создать статью', new_article_path %></li>
+          <li><%= link_to 'Мои статьи', '/?my=true' %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+  <% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, id: "flash_#{:last_name}" %>
+  <% end %>
+  <%= yield %>
+</body>
+</html>
