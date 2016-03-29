@@ -8,9 +8,9 @@ class VotesController < ApplicationController
     article = vote.article
     flash["alert-success"] = 'Спасибо! Ваш голос учтен'
     redirect_to vote.article
-
   end
 
+  private
 
   def permitted_params
     params.permit(:article_id)
