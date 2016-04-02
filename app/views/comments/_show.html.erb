@@ -1,7 +1,8 @@
-<% @article.comments.each do |comment| %>
+<div class="container">
   <div class="coment">
-    <%= image_tag comment.user.avatar.url(:thumb) %>
+    <% @article.comments.each do |comment| %>
     <p class="page-header name">
+    <%= image_tag comment.user.avatar.url(:thumb) %>
       <strong>Имя:</strong>
       <td><%= @article.user.first_name%> </td>
     </p>
@@ -16,4 +17,5 @@
                  method: :delete,
                  data: { confirm: 'Вы уверены?' } %>
   </p>
-<% end %>
+  <% end %>
+</div>

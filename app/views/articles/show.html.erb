@@ -1,40 +1,26 @@
-<div class="header-title">
-  <%= image_tag @article.user.avatar.url(:thumb) %>
-  <h3 class="page-header title-text"> <%= @article.title %></h3>
+<div class="container">
+  <div class="header-title">
+    <%= image_tag @article.user.avatar.url(:thumb) %>
+    <h3 class="page-header title-text"> <%= @article.title %></h3>
+    <p>
+      <%= @article.created_at.strftime('%d/%m/%Y %H:%M')  %>
+    </p>
+  </div>
+  <p class="sub-header"> <%= @article.text %></p>
+
   <p>
-    <%= @article.created_at.strftime('%d/%m/%Y %H:%M')  %>
+    <% if @article.voted_by?(current_user) %>
+      Вы уже проголосовали за данную статью
+    <% else %>
+      <%= button_to('Проголосовать', votes_path({ article_id: @article.id })) %>
+    <% end %>
   </p>
-</div>
-<p class="sub-header"> <%= @article.text %></p>
 
-<p>
-  <% if @article.voted_by?(current_user) %>
-    Вы уже проголосовали за данную статью
-  <% else %>
-    <%= button_to('Проголосовать', votes_path({ article_id: @article.id })) %>
-  <% end %>
-</p>
-
-<p>
-  <b>Голосов:</b>
-  <%= @article.votes.count %>
-</p>
-  
-<%= render "comments/show" %>
-<%= render "comments/new" %>
-
+  <p>
+    <b>Голосов:</b>
+    <%= @article.votes.count %>
+  </p>
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <%= render "comments/show" %>
+  <%= render "comments/new" %>
+</div>

@@ -15,12 +15,12 @@
           <p class="col-xs-6 h4 title " align="left"><%= link_to "Мой блог", root_path %></p>
         </div>
         <% if current_user %>
-          <span id="avatar">
+          <div id="avatar" class="img-circle">
             <%= image_tag current_user.avatar.url(:thumb) %>
-            </span>
-          <div class="col-xs-6 row">
-            <span class="col-xs-9 user-name"><%= current_user.email %></span>
-            <div class="btn btn-default col-xs-3"><%= link_to "Выйти", logout_path  %></div>
+          </div>
+            <div class="col-xs-6 row pull-right">
+              <span class="col-xs-9 user-name"><%= current_user.email %></span>
+            <div class="btn btn-default col-xs-3"><%= link_to "Выйти", logout_path %></div>
               <% else %>
               <div class="btn btn-default"><%= link_to "Зарегистрироваться", new_user_path %> </div>
               <div class="btn btn-default"><%= link_to "Войти", new_session_path %></div>
@@ -33,7 +33,7 @@
   <div class="row">
     <div class="col-xs-12"> &nbsp</div>
   </div>
-  <div class="row">
+  <div class="container">
     <div class="col-xs-3">
       <h3 class="page-header "><%= @name %></h3>
     </div>
